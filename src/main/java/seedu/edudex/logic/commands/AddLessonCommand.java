@@ -44,7 +44,6 @@ public class AddLessonCommand extends Command {
     public static final String MESSAGE_SUBJECT_NOT_TAUGHT = "You tried to add a lesson with "
             + "a subject that is not in the list of subjects you teach.\n "
             + "Use \"addsub SUBJECT\" to add a subject first.";
-    // public static final String MESSAGE_CONFLICTING_LESSON_TIMING = ;
 
     private Index studentIndex;
     private Lesson lessonToAdd;
@@ -70,7 +69,7 @@ public class AddLessonCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        // if list of subjects taught does not contain input subject, throw exception
+        // If list of subjects taught does not contain input subject, throw exception
         Subject subjectOfAddedLesson = lessonToAdd.getSubject();
         if (!model.hasSubject(subjectOfAddedLesson)) {
             throw new CommandException(MESSAGE_SUBJECT_NOT_TAUGHT);
