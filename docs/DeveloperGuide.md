@@ -21,6 +21,8 @@ Our project EduDex is based on [AddressBook-Level3 (AB3)](https://github.com/se-
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
+Any reference to "Person" is interchangeable with "Student" for the rest of this Developer Guide.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Design**
@@ -177,29 +179,29 @@ The command is structured as follows:
 
 #### Design considerations
 
-| Aspect | Alternatives | Current choice | Reason |
-|--------|---------------|----------------|--------|
+| Aspect             | Alternatives                                          | Current choice                                   | Reason                                             |
+|--------------------|-------------------------------------------------------|--------------------------------------------------|----------------------------------------------------|
 | Predicate handling | Create separate commands for day and subject searches | Unified `FindCommand` with multiple constructors | Reduces command duplication and simplifies parsing |
-| Case sensitivity | Exact match | Case-insensitive match | Provides better user experience |
-| Error handling | Reject invalid days/subjects silently | Validate against allowed days and empty subjects | Ensures robust input validation |
+| Case sensitivity   | Exact match                                           | Case-insensitive match                           | Provides better user experience                    |
+| Error handling     | Reject invalid days/subjects silently                 | Validate against allowed days and empty subjects | Ensures robust input validation                    |
 
 ---
 
 #### Example usages
 
-| Command            | Description |
-|--------------------|-------------|
+| Command            | Description                                         |
+|--------------------|-----------------------------------------------------|
 | `find alice bob`   | Finds students whose names contain “alice” or “bob” |
-| `find d/Tuesday`   | Finds students with lessons on Tuesday |
-| `find sub/Science` | Finds students taking Science lessons |
+| `find d/Tuesday`   | Finds students with lessons on Tuesday              |
+| `find sub/Science` | Finds students taking Science lessons               |
 
 ---
 
 #### Example UI output
 
-| Input           | Output |
-|-----------------|--------|
-| `find d/Friday` | Displays list of students with Friday lessons |
+| Input           | Output                                             |
+|-----------------|----------------------------------------------------|
+| `find d/Friday` | Displays list of students with Friday lessons      |
 | `find sub/Math` | Displays students taking Math, with lesson details |
 
 ---
@@ -237,19 +239,19 @@ The command structure is as follows:
 
 #### Design considerations
 
-| Aspect | Alternatives | Current choice | Reason |
-|--------|---------------|----------------|--------|
-| Command format | `delete lesson 1 2` | `dellesson 1 2` | Shorter and easier to parse |
-| Validation | Ignore invalid indices | Throw `CommandException` with proper messages | Prevents accidental deletions |
-| Data mutation | Modify lesson list directly | Create a new `Person` instance with updated lessons | Preserves immutability of model data |
+| Aspect         | Alternatives                | Current choice                                      | Reason                               |
+|----------------|-----------------------------|-----------------------------------------------------|--------------------------------------|
+| Command format | `delete lesson 1 2`         | `dellesson 1 2`                                     | Shorter and easier to parse          |
+| Validation     | Ignore invalid indices      | Throw `CommandException` with proper messages       | Prevents accidental deletions        |
+| Data mutation  | Modify lesson list directly | Create a new `Person` instance with updated lessons | Preserves immutability of model data |
 
 ---
 
 #### Example usages
 
-| Command | Description |
-|----------|-------------|
-| `dellesson 1 1` | Deletes the first lesson from the first student |
+| Command         | Description                                      |
+|-----------------|--------------------------------------------------|
+| `dellesson 1 1` | Deletes the first lesson from the first student  |
 | `dellesson 3 2` | Deletes the second lesson from the third student |
 | `dellesson 2 5` | Deletes the fifth lesson from the second student |
 
@@ -257,12 +259,12 @@ The command structure is as follows:
 
 #### Example error cases
 
-| Input | Result                            |
-|--------|-----------------------------------|
-| `dellesson 0 1` | Error: Invalid command format     |
-| `dellesson 1 0` | Error: Invalid command format     |
-| `dellesson 1 99` | Error: Lesson index out of bounds |
-| `dellesson 1 a` | Error: Invalid command format     |
+| Input            | Result                       |
+|------------------|------------------------------|
+| `dellesson 0 1`  | Invalid command format error |
+| `dellesson 1 0`  | Invalid command format error |
+| `dellesson 1 99` | Invalid lesson index error   |
+| `dellesson 1 a`  | Invalid command format error |
 
 ---
 
@@ -277,13 +279,13 @@ The `DeleteLessonCommand` interacts with the `ModelManager` as follows:
 
 ### Example test cases
 
-| Scenario | Command            | Expected Result |
-|-----------|--------------------|-----------------|
-| Find by day | `find d/Monday`    | Lists all students with Monday lessons |
-| Find by subject | `find sub/Science` | Lists all students taking Science |
-| Delete valid lesson | `dellesson 1 2`    | Deletes 2nd lesson of 1st student |
-| Invalid student index | `dellesson 0 1`    | Invalid command format |
-| Invalid lesson index | `dellesson 1 5`    | Error: Invalid lesson index |
+| Scenario              | Command            | Expected Result                        |
+|-----------------------|--------------------|----------------------------------------|
+| Find by day           | `find d/Monday`    | Lists all students with Monday lessons |
+| Find by subject       | `find sub/Science` | Lists all students taking Science      |
+| Delete valid lesson   | `dellesson 1 2`    | Deletes 2nd lesson of 1st student      |
+| Invalid student index | `dellesson 0 1`    | Invalid command format error           |
+| Invalid lesson index  | `dellesson 1 5`    | Invalid lesson index error             |
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
@@ -327,9 +329,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | new user                                | view a help page for the usage of the app | understand how to navigate EduDex                         |
 | `* *`    | new user                                | set my profile with subjects I teach      | customise the app to subjects I teach                     |
 | `* *`    | tutor                                   | get help for specific commands I enter    | see what fields I have entered incorrectly                |
-| `* *`    | tutor                                   | search for my students' names             | find their contact information                            |
-| `* *`    | tutor                                   | add a subject I teach                     | subsequently schedule a lesson with the subject i teach   |
-| `* *`    | tutor                                   | add a lesson to my student                | plan my tuition schedules conveniently                    |
+| `* *`    | tutor                                   | search for my students' names             | quickly find their contact information                    |
+| `* *`    | tutor                                   | add a subject I teach                     | subsequently schedule a lesson with the subject I teach   |
+| `* *`    | tutor                                   | add a lesson to my student                | better plan my tuition schedule                           |
 | `* *`    | tutor                                   | search for my lessons for the day         | better plan my personal time and schedule                 |
 | `* *`    | tutor                                   | search for my lessons for each subject    | better allocate my time for each subject                  |
 | `* *`    | tutor who wants to view her workload    | search by subject	                        | see which subjects are most popular                       |
@@ -355,19 +357,19 @@ Use case ends.
 
 **Extensions:**
 - **2a. Invalid phone number format**
-    - 2a1. EduDex shows an error message
+    - 2a1. EduDex shows an error message  
       Use case ends. 
 
 - **2b. Invalid time format**
-    - 2b1. EduDex shows an error message
+    - 2b1. EduDex shows an error message  
       Use case ends. 
 
 - **2c. Invalid day of week**
-    - 2c1. EduDex shows an error message
+    - 2c1. EduDex shows an error message  
       Use case ends. 
 
 - **2d. Missing required parameters**
-    - 2d1. EduDex shows an error message
+    - 2d1. EduDex shows an error message  
       Use case ends.
 
 
@@ -392,7 +394,7 @@ Use case ends.
 - At least one student exists in the list
 
 **Main Success Scenario:**
-1. User requests to <u>list students</u>
+1. User requests to <u>list students</u> (Use Case 2)
 2. User requests to delete a specific student in the list using index in the list
 3. EduDex removes the student at the specified index
 4. EduDex shows a confirmation message  
@@ -400,15 +402,15 @@ Use case ends.
 
 **Extensions:**
 - **2a. Invalid index format (non-number)**
-    - 2a1. EduDex shows an error message 
+    - 2a1. EduDex shows an error message   
       Use case ends.
 
 - **2b. Index out of bounds**
-    - 2b1. EduDex shows an error message
+    - 2b1. EduDex shows an error message  
       Use case ends.
 
 - **2c. Missing required parameters**
-    - 2c1. EduDex shows an error message
+    - 2c1. EduDex shows an error message  
       Use case ends.
 
 
@@ -423,16 +425,16 @@ Use case ends.
 1. User request to find a student by name.
 2. EduDex performs a case-insensitive search over names.
 3. EduDex filters the list to students to match with the provided name
-4. EduDex displays the filtered list and a result summary
+4. EduDex displays the filtered list and a result summary  
    Use case ends.
 
 **Extensions**
 - **1a. Missing required parameters**
-    - 1a1. EduDex shows an error message
+    - 1a1. EduDex shows an error message  
       Use case ends.
 
 - **4a. No student found**
-    - 4a1. EduDex return an empty list
+    - 4a1. EduDex return an empty list  
       Use case ends.
 
 **Post conditions:**
@@ -455,15 +457,15 @@ Use case ends.
 
 **Extensions:**
 - **1a. Missing day parameter**
-    - 1a1. EduDex shows an error message
+    - 1a1. EduDex shows an error message  
       Use case ends.
   
 - **2a. Invalid day value**
-    - 2a1. EduDex shows an error message
+    - 2a1. EduDex shows an error message  
       Use case ends.
 
 - **4a. No student found with the specified day**
-    - 4a1. EduDex return an empty list
+    - 4a1. EduDex return an empty list  
       Use case ends.
 
 #### Use Case 6: Find Students by Subject
@@ -483,11 +485,11 @@ Use case ends.
 
 **Extensions:**
 - **1b. Missing subject parameter**
-    - 1a1. EduDex shows an error message
+    - 1a1. EduDex shows an error message  
       Use case ends.
 
 - **5a. No students found with the specified subject**
-    - 5a1. EduDex returns an empty list
+    - 5a1. EduDex returns an empty list  
       Use case ends.
 
 #### Use Case 7: Edit a Student's Information
@@ -498,7 +500,7 @@ Use case ends.
 - At least one student exists in the list
 
 **Main Success Scenario:**
-1. User requests to <u>list students</u>
+1. User requests to <u>list students</u> (Use Case 2)
 2. User requests to edit a specific student's information using the index
 3. EduDex validates the provided parameters
 4. EduDex updates the student's information
@@ -507,23 +509,23 @@ Use case ends.
 
 **Extensions:**
 - **1a. Missing student index**
-    - 1a1. EduDex shows an error message
+    - 1a1. EduDex shows an error message  
       Use case ends.
 
 - **2a. Invalid index format (non-number)**
-    - 2a1. EduDex shows an error message
+    - 2a1. EduDex shows an error message  
       Use case ends.
 
 - **2b. Index out of bounds**
-    - 2b1. EduDex shows an error message
+    - 2b1. EduDex shows an error message  
       Use case ends.
 
 - **3a. No fields provided to edit**
-    - 3a1. EduDex shows an error message
+    - 3a1. EduDex shows an error message  
       Use case ends.
 
 - **3b. Invalid phone number format**
-    - 3b1. EduDex shows an error message
+    - 3b1. EduDex shows an error message  
       Use case ends.
 
 
@@ -546,15 +548,15 @@ Use case ends.
 
 **Extensions:**
 - **1a. Missing subject name**
-    - 1a1. EduDex shows an error message
+    - 1a1. EduDex shows an error message  
       Use case ends.
 
 - **1b. Invalid subject name (non-alphanumeric)**
-    - 1b1. EduDex shows an error message
+    - 1b1. EduDex shows an error message  
       Use case ends.
 
 - **3a. Subject already exists**
-    - 3a1. EduDex shows an error message
+    - 3a1. EduDex shows an error message  
       Use case ends.
 
 
@@ -575,15 +577,15 @@ Use case ends.
 
 **Extensions:**
 - **1a. Missing subject index**
-    - 1a1. EduDex shows an error message
+    - 1a1. EduDex shows an error message  
       Use case ends.
 
 - **2a. Invalid index format (non-number)**
-    - 2a1. EduDex shows an error message
+    - 2a1. EduDex shows an error message  
       Use case ends.
 
 - **2b. Index out of bounds**
-    - 2b1. EduDex shows an error message
+    - 2b1. EduDex shows an error message  
       Use case ends.
 
 **Post conditions:**
@@ -600,7 +602,7 @@ Use case ends.
 - At least one subject exists in the subject list
 
 **Main Success Scenario:**
-1. User requests to <u>list students</u>
+1. User requests to <u>list students</u> (Use Case 2)
 2. User requests to add a lesson to a specific student with required parameters
 3. EduDex validates all parameters
 4. EduDex checks for lesson conflicts with other students
@@ -610,31 +612,31 @@ Use case ends.
 
 **Extensions:**
 - **1a. Missing required field**
-    - 1a1. EduDex shows an error message
+    - 1a1. EduDex shows an error message  
       Use case ends.
 
 - **2a. Invalid student index**
-    - 2a1. EduDex shows an error message
+    - 2a1. EduDex shows an error message  
       Use case ends.
 
 - **3a. Subject does not exist in subject list**
-    - 3a1. EduDex shows an error message
+    - 3a1. EduDex shows an error message  
       Use case ends.
 
 - **3b. Invalid day of week**
-    - 3b1. EduDex shows an error message
+    - 3b1. EduDex shows an error message  
       Use case ends.
 
 - **3c. Invalid time format**
-    - 3c1. EduDex shows an error message
+    - 3c1. EduDex shows an error message  
       Use case ends.
 
 - **3d. End time is before or equal to start time**
-    - 3d1. EduDex shows an error message
+    - 3d1. EduDex shows an error message  
       Use case ends.
 
 - **4a. Lesson conflicts with another student's lesson**
-    - 4a1. EduDex shows an error message with conflicting student details
+    - 4a1. EduDex shows an error message with conflicting student details  
       Use case ends.
 
 
@@ -647,7 +649,7 @@ Use case ends.
 - The student has at least one lesson
 
 **Main Success Scenario:**
-1. User requests to <u>list students</u>
+1. User requests to <u>list students</u> (Use Case 2)
 2. User views the student's lessons in the list
 3. User requests to delete a specific lesson using student index and lesson index
 4. EduDex validates both indices
@@ -657,23 +659,23 @@ Use case ends.
 
 **Extensions:**
 - **1a. Missing student index or lesson index**
-    - 1a1. EduDex shows an error message
+    - 1a1. EduDex shows an error message  
       Use case ends.
 
 - **3a. Invalid student index format (non-number)**
-    - 3a1. EduDex shows an error message
+    - 3a1. EduDex shows an error message  
       Use case ends.
 
 - **3b. Student index out of bounds**
-    - 3b1. EduDex shows an error message
+    - 3b1. EduDex shows an error message  
       Use case ends.
 
 - **3c. Invalid lesson index format (non-number)**
-    - 3c1. EduDex shows an error message
+    - 3c1. EduDex shows an error message  
       Use case ends.
 
 - **3d. Lesson index out of bounds**
-    - 3d1. EduDex shows an error message
+    - 3d1. EduDex shows an error message  
       Use case ends.
 
 
@@ -687,7 +689,7 @@ Use case ends.
 - At least one subject exists in the subject list
 
 **Main Success Scenario:**
-1. User requests to <u>list students</u>
+1. User requests to <u>list students</u> (Use Case 2)
 2. User views the student's lessons in the list
 3. User requests to edit a specific lesson using student index and lesson index
 4. EduDex validates both indices and the provided lesson fields
@@ -698,46 +700,46 @@ Use case ends.
 
 **Extensions:**
 - **1a. Missing student index or lesson index**
-    - 1a1. EduDex shows an error message
+    - 1a1. EduDex shows an error message  
       Use case ends.
 
 - **3a. Invalid student index**
-    - 3a1. EduDex shows an error message
+    - 3a1. EduDex shows an error message  
       Use case ends.
 
 - **3b. Invalid lesson index**
-    - 3b1. EduDex shows an error message
+    - 3b1. EduDex shows an error message  
       Use case ends.
 
 - **4a. No fields provided to edit**
-    - 4a1. EduDex shows an error message
+    - 4a1. EduDex shows an error message  
       Use case ends.
 
 - **4b. User attempts to edit both person and lesson fields**
-    - 4b1. EduDex shows an error message
+    - 4b1. EduDex shows an error message  
       Use case ends.
 
 - **4c. Subject does not exist in subject list**
-    - 4c1. EduDex shows an error message 
+    - 4c1. EduDex shows an error message   
       Use case ends.
 
 - **4d. Invalid day of week**
-    - 4d1. EduDex shows an error message
+    - 4d1. EduDex shows an error message  
       Use case ends.
 
 - **4e. Invalid time format**
-    - 4e1. EduDex shows an error message
+    - 4e1. EduDex shows an error message  
       Use case ends.
 
 - **4f. End time is before or equal to start time**
-    - 4f1. EduDex shows an error message
+    - 4f1. EduDex shows an error message  
       Use case ends.
 
 - **5a. Edited lesson conflicts with another student's lesson**
-    - 5a1. EduDex shows an error message 
+    - 5a1. EduDex shows an error message   
       Use case ends.
 
-## Use Case 13 : Exit the Application
+#### Use Case 13 : Exit the Application
 
 **Preconditions:**
 - User has launched the EduDex application
@@ -748,13 +750,6 @@ Use case ends.
 2. EduDex closes the application  
 Use case ends.
 
-**Extensions:**
-- **2a. User has unsaved changes (for future versions)**
-    - 2a1. EduDex displays warning message
-    - 2a2. EduDex asks for confirmation
-    - 2a3. User confirms
-    - Use case resumes from step 3.
-
 #### Use Case 14: Handle Invalid Command
 
 **Preconditions:**
@@ -763,16 +758,12 @@ Use case ends.
 
 **Main Success Scenario:**
 1. User enters an unrecognized command
-2. EduDex shows an error message
+2. EduDex shows an error message  
    Use case ends.
 
 **Extensions:**
 - **2a. Command is partially correct**
-    - 2a1. EduDex provides specific error about the incorrect parameter  
-      Use case ends.
-
-- **2b. Command has typo**
-    - 2b1. EduDex suggests possible correct commands  
+    - 2a1. EduDex provides specific error about the incorrect parameter   
       Use case ends.
 ---
 
@@ -801,7 +792,7 @@ Use case ends.
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 * **RAM**: Random Access Memory. Main memory of the computer, used for temporary storage of data and instructions.
 * **SSD**: Solid State Drive. A high speed storage device that stores data permanently.
-* **Student**: Refers to a learner or individual being taught by the user of this application.
+* **Student**: Refers to a learner or individual being taught by the user of this application. Interchangeable with "Person".
 
 --------------------------------------------------------------------------------------------------------------------
 
