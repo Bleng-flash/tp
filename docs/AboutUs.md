@@ -16,7 +16,6 @@ You can reach us at the email `ryan_toh@u.nus.edu`
 <img src="images/nghaowei.png" width="200px">
 
 [[github](https://github.com/nghaowei)]
-[[portfolio](team/nghaowei.md)]
 
 * Role: Code Quality Checker
 * Responsibilities: Ensure that code written is consistent in style and applies the correct programming paradigms.
@@ -26,7 +25,6 @@ You can reach us at the email `ryan_toh@u.nus.edu`
 <img src="images/starishine.png" width="200px">
 
 [[github](http://github.com/starshine)]
-[[portfolio](team/sania.md)]
 
 * Role: Deliverables and deadlines, Scheduling and tracking
 * Responsibilities: Ensure project deliverables are done on time and in the right format.
@@ -46,7 +44,6 @@ In charge of defining, assigning, and tracking project tasks.
 <img src="images/bleng-flash.png" width="200px">
 
 [[github](https://github.com/Bleng-flash)]
-[[portfolio](team/bryanleng.md)]
 
 * Role: Documentation + Git expert
 * Responsibilities: Ensure that documentation is consistent with the implementation.
@@ -56,7 +53,6 @@ In charge of defining, assigning, and tracking project tasks.
 <img src="images/ryan-toh.png" width="200px">
 
 [[github](http://github.com/ryan-toh)]
-[[portfolio](team/ryan-toh.md)]
 
 * Role: Team Lead
 * Responsibilities: Ensure that the User Interface is easy and intuitive to use.
