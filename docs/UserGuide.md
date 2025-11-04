@@ -12,10 +12,10 @@ EduDex is a **desktop app for managing student contacts, optimized for use via a
 
 ## Target Audience
 This user guide is targeted towards **freelance tutors** who: 
-- Struggle to keep track of multiple students and their lesson schedules
-- Face challenges in quickly identifying lesson conflicts across many students
-- Are comfortable with technology and have basic CLI experience
-- Prefer fast, keyword-driven workflows over mouse-driven interactions
+- Struggle to keep track of multiple students and their lesson schedules.
+- Face challenges in quickly identifying lesson conflicts across many students.
+- Are comfortable with technology and have basic CLI experience.
+- Prefer fast, keyword-driven workflows over mouse-driven interactions.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -25,9 +25,9 @@ This user guide is targeted towards **freelance tutors** who:
 ## Quick start
 
 1. Ensure you have Java `17` or above installed in your Computer.<br>
-   **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
-   **Windows users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html).
-   **Linux users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html).
+   **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).    
+   **Windows users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html).  
+   **Linux users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html).  
 
 2. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103T-T12-1/tp/releases).
 
@@ -42,28 +42,24 @@ A GUI similar to the below should appear in a few seconds, with a pop-up asking 
 
 _Initial start-up of Edudex_
 
-<box type="info" seamless>
-Any reference of "Contact" is interchangeable with "Student" and "Person" in the rest of this User Guide.
-</box>
-
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * `list` : Lists all contacts.
+   * `list` : Lists all students.
 
-   * `add n/John Doe p/98765432 sch/Raffles Primary School a/John street, block 123, #01-01` : Adds a contact named `John Doe` to EduDex.
+   * `add n/John Doe p/98765432 sch/Raffles Primary School a/John street, block 123, #01-01` : Adds a student named `John Doe` to EduDex.
 
    * `addsub english` : Adds a subject named `English` to the subject list.
    
-   * `addlesson 1 sub/english d/monday start/10:00 end/11:00` : Adds a lesson to the first contact, with a subject of english, day of Monday, and timing from 10:00-11:00
+   * `addlesson 1 sub/english d/monday start/10:00 end/11:00` : Adds a lesson to the first student, with a subject of english, day of Monday, and timing from 10:00-11:00.
    
-   * `editlesson 1 1 d/tuesday` : Edits the first lesson of the first contact, changing day to tuesday
+   * `editlesson 1 1 d/tuesday` : Edits the first lesson of the first student, changing day to Tuesday.
    
-   * `find sub/english` : Finds all students with subject English taken 
+   * `find sub/english` : Finds all students with subject English taken.
    
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+   * `delete 3` : Deletes the 3rd student shown in the current student list.
 
-   * `clear` : Deletes all contacts.
+   * `clear` : Deletes all students.
 
    * `exit` : Exits the app.
 
@@ -99,11 +95,18 @@ Any reference of "Contact" is interchangeable with "Student" and "Person" in the
 
 Shows a message explaining how to access the help page.
 
+Format: `help`
+
 ![help message](images/helpMessage.png)
 
 _Help window with link to User Guide_
 
-Format: `help`
+
+### Listing all students : `list`
+
+Shows a list of all students in EduDex.
+
+Format: `list`
 
 ### Adding a subject: `addsub`
 
@@ -119,7 +122,8 @@ Format: `addsub SUBJECT`
 
 **Caution:**
 * Duplicate subjects (case-insensitive) are not allowed.
-* Consecutive spaces in subject names do not matter and are treated as a single space (e.g., `A   math` is the same as `A math`)
+* Consecutive spaces in subject names do not matter and are treated as a single space. (e.g., `A math`
+  (two spaces between `A` and `math`) is the same as `A math`)
   </box>
 
 Examples:
@@ -134,7 +138,7 @@ You can adjust the size of the subject panel and the student panel as necessary 
 
 ![addSubSuccess](images/addSub.png)
 
-_Subject "english" added successfully._
+_Subject "english" added successfully_
 
 ### Deleting a subject : `delsub`
 
@@ -143,8 +147,8 @@ Deletes the specified subject from EduDex.
 Format: `delsub INDEX`
 
 **Field Requirements:**
-* `INDEX` must be a **positive integer** (1, 2, 3, …)
-* `INDEX` refers to the index number shown in the displayed subject list
+* `INDEX` must be a **positive integer** (1, 2, 3, …) not exceeding MAX-INT(2,147,483,647).
+* `INDEX` refers to the index number shown in the displayed subject list.
 
 Examples:
 * `delsub 1` deletes the 1st subject in EduDex.
@@ -162,28 +166,28 @@ Adds a student to EduDex.
 Format: `add n/NAME p/PHONE_NUMBER sch/SCHOOL a/ADDRESS [t/TAG]`
 
 **Field Requirements:**
-* `NAME` should only contain alphanumeric characters and spaces, must not be blank
-* `PHONE_NUMBER` should only contain numbers, at least 3 digits long
-* `SCHOOL` should only contain alphanumeric characters, special characters (except `/`) and spaces, must not be blank
-* `ADDRESS` can be any value, must not be blank
-* `TAG` (optional) should be alphanumeric
+* `NAME` should only contain alphanumeric characters and spaces, must not be blank.
+* `PHONE_NUMBER` should only contain numbers, at least 3 digits long.
+* `SCHOOL` should only contain alphanumeric characters, special characters (except `/`) and spaces, must not be blank.
+* `ADDRESS` can be any value, must not be blank.
+* `TAG` (optional) should be alphanumeric.
 
 <box type="warning" seamless>
 
-**Caution**
-* Names are **case-insensitive** (e.g., `john doe` is the same student as `JOHN DOE`)
+**Caution:**
+* Names are **case-insensitive**. (e.g., `john doe` is the same student as `JOHN DOE`)
 * Names with consecutive spaces do not matter and are treated as a single space. (e.g., `john   doe` is the same as `john doe`)
-* A student can have any number of tags (including 0)
+* A student can have any number of tags (including 0).
 </box>
 
 <box type="tip" seamless>
 
 **Tip for student names with special characters:**
 * Special characters such as `-` and `/` are not supported for names of students, as they may potentially
-  interfere with the command line syntax
+  interfere with the command line syntax.
 * For example, if you have a student whose name is "Raj S/O Muthu", consider abbreviating
-  "S/O" to "SO" instead
-* For students who have the same name, users are welcome to provide their [**own ways**](#faq) to distinguish the name, using additional numbers or words
+  "S/O" to "SO" instead.
+* For students who have the same name, users are welcome to provide their [**own ways**](#faq) to distinguish the name, using additional numbers or words.
 
 </box>
 
@@ -191,20 +195,13 @@ Examples:
 * `add n/John Doe p/98765432 sch/NUS a/John street, block 123`
 * `add n/Betsy Crowe sch/Queenstown Primary School a/Clementi p/1234567 t/weakInAlgebra`
 
-![AddContact](images/addContactSuccess.png)
+![AddStudent](images/addContactSuccess.png)
 
 _Student John Doe added successfully._
 
-
-### Listing all students : `list`
-
-Shows a list of all students in EduDex.
-
-Format: `list`
-
 ### Editing a student : `edit`
 
-Edits an existing student fields
+Edits an existing student's field(s).
 
 **Student fields that can be edited**: Name, Phone Number, School, Address, Tags
 
@@ -212,26 +209,26 @@ Format:
 `edit INDEX [n/NAME] [p/PHONE] [sch/SCHOOL] [a/ADDRESS] [t/TAG]…​`
 
 **Field Requirements:**
-* `INDEX` must be a **positive integer** not exceeding MAX-INT(2,147,483,647)
-* `INDEX` refers to the index number shown in the displayed student list
-* At least one optional field must be provided
-* Field constraints are the same as in the [`add`](#adding-a-student-add) command
+* `INDEX` must be a **positive integer** (1, 2, 3, …) not exceeding MAX-INT(2,147,483,647).
+* `INDEX` refers to the index number shown in the displayed student list.
+* At least one optional field must be provided.
+* Field constraints are the same as in the [`add`](#adding-a-student-add) command.
 
 <box type="tip" seamless>
 
 **Note:**
-* When editing tags, the existing tags will be **replaced** (not added to)
-* To remove all tags, type `t/` without specifying any tags after it
-* To edit a student's **lesson details**, use the [`editlesson`](#editing-a-lesson-editlesson) command instead
+* When editing tags, the existing tags will be **replaced** (not added to).
+* To remove all tags, type `t/` without specifying any tags after it.
+* To edit a student's **lesson details**, use the [`editlesson`](#editing-a-lesson-editlesson) command instead.
 </box>
 
 <box type="tip" seamless>
 
 **Tip for student names with special characters:**
 * Special characters such as `-` and `/` are not supported for names of students, as they may potentially
-  interfere with the command line syntax
+  interfere with the command line syntax.
 * For example, if you have a student whose name is "Raj S/O Muthu", consider abbreviating
-  "S/O" to "SO" instead
+  "S/O" to "SO" instead.
 </box>
 
 Examples:
@@ -243,48 +240,6 @@ Examples:
 | ![Before Edit School](images/BeforeEditLesson.png) |   ![After Edit School](images/EditSchool.png)    |
 |              _Before editing school_               |              _After editing school_              |
 
-
-
-
-### Locating students by Name, Day, or Subject: `find`
-
-Finds students whose **names**, **lesson days**, or **lesson subjects** match the given keywords.
-
-Format:  
-`find KEYWORD [MORE_KEYWORDS]`<br>
-`find NAME`
-`find d/DAY`  
-`find sub/SUBJECT`
-
-**Field Requirements:**
-* For name search: any keyword (partial matches allowed)
-* For day search: valid days of the week (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)
-* For subject search: existing subject names in EduDex 
-
-<box type="info" seamless>
-
-**Search Behavior:**
-* All searches are **case-insensitive** (e.g., `find hans` matches `Hans`)
-* For name search: matches students with at least one keyword (OR search)
-* Order of keywords does not matter (e.g., `find Hans Bo` matches `Bo Hans`)
-* Reset to the base student list after each search by executing `list`.
-* For `find sub/SUBJECT`: lessons are automatically sorted by day and start time
-  </box>
-
-<box type="tip" seamless>
-
-**Tip:** You can search by name, day, or subject independently.  
-e.g.
-- `find alice` — finds students with names containing "alice".
-- `find alex david` — finds both `Alex Yeoh` and `David Li`.
-- `find d/Monday` — finds all students with lessons on Monday.
-- `find sub/Math` — finds all students taking Math lessons.
-  </box>
-
-![result for 'find Alex David'](images/findAlexDavidResult.png)
-
-_Find result for names 'Alex' or 'David'_
-
 ### Deleting a student : `delete`
 
 Deletes the specified student from EduDex.
@@ -292,14 +247,14 @@ Deletes the specified student from EduDex.
 Format: `delete INDEX`
 
 **Field Requirements:**
-* `INDEX` must be a **positive integer** not exceeding MAX_INT (2,147,483,647)
-* `INDEX` refers to the index number shown in the displayed student list
+* `INDEX` must be a **positive integer** (1, 2, 3, …) not exceeding MAX_INT (2,147,483,647).
+* `INDEX` refers to the index number shown in the displayed student list.
 
 <box type="warning" seamless>
 
 **Caution:**
 * This action is irreversible. All student information and associated lessons will be permanently deleted.
-</box>
+  </box>
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd student in EduDex.
@@ -311,8 +266,7 @@ Examples:
 1. Execute `find KEYWORD [MORE_KEYWORDS]`, followed by `delete INDEX`.
 2. The list remains filtered, so you may continue deleting more students that meet the same criteria.
 
-  </box>
-
+</box>
 
 ### Adding a lesson: `addlesson`
 
@@ -321,22 +275,22 @@ Adds a lesson to the student in EduDex, specified by index.
 Format: `addlesson STUDENT_INDEX sub/SUBJECT d/DAY start/START_TIME end/END_TIME`
 
 **Field Requirements:**
-* `STUDENT_INDEX` must be a **positive integer** not exceeding MAX_INT (2,147,483,647)
-* `STUDENT_INDEX` refers to the student's position in the displayed list
-* `SUBJECT` must match (case-insensitive) an existing subject in EduDex
-* `DAY` must be one of: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday (case-insensitive)
-* `START_TIME` and `END_TIME` must be in 24-hour format **HH:MM**
-* `START_TIME` must be earlier than `END_TIME`
+* `STUDENT_INDEX` must be a **positive integer** (1, 2, 3, …) not exceeding MAX_INT (2,147,483,647).
+* `STUDENT_INDEX` refers to the student's position in the displayed list.
+* `SUBJECT` must match (case-insensitive) an existing subject in EduDex.
+* `DAY` must be one of: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday (case-insensitive).
+* `START_TIME` and `END_TIME` must be in 24-hour format **HH:MM**.
+* `START_TIME` must be earlier than `END_TIME`.
 
 <box type="warning" seamless>
 
 **Caution:**
-* The new lesson must not conflict with existing lessons (for any student)
-* Lessons extending past midnight must be split into separate lessons
+* Lessons extending past midnight must be split into separate lessons.
   * Example: A lesson from Monday 22:00 to Tuesday 02:00 should be:
     * Monday 22:00 to 23:59
     * Tuesday 00:00 to 02:00
 * Any 2 or more students can have the [**same**](#faq) lessons, with exactly the same subject, day, start time and end time.
+* Otherwise, the new lesson must not conflict with existing lessons (for any student).
 </box>
 
 Examples:
@@ -347,6 +301,47 @@ Examples:
 
 _Lesson "math" added successfully to student John Doe._
 
+### Editing a lesson : `editlesson`
+
+Edits an existing lesson for a specific student in EduDex.
+
+Format: `editlesson STUDENT_INDEX LESSON_INDEX [sub/SUBJECT] [d/DAY] [start/START_TIME] [end/END_TIME]`
+
+**Field Requirements:**
+* `STUDENT_INDEX` and `LESSON_INDEX` must be **positive integers** (1, 2, 3, …) not exceeding MAX-INT (2,147,483,647).
+* `STUDENT_INDEX` refers to the student's position in the displayed list.
+* `LESSON_INDEX` refers to the lesson's position in that student's lesson list (shown in `list` command).
+* At least one optional field must be provided.
+* Lesson field constraints are the same as in the [`addlesson`](#adding-a-lesson-addlesson) command.
+
+<box type="warning" seamless>
+
+**Caution:**
+* The edited lesson time must not conflict with:
+    * Other lessons of the **same student**.
+    * Lessons of **other students** (no overlapping times on the same day).
+* If changing the subject, ensure it exists in EduDex (use `addsub` first if needed).
+* If a subject has been deleted and a lesson still uses it, you must first change the subject field to a valid subject before editing other fields (day, time).
+  </box>
+
+<box type="tip" seamless>
+
+**Tip:** You can edit just one field at a time or multiple fields together.
+- `editlesson 1 1 d/Tuesday` — Changes only the day of the first lesson.
+- `editlesson 2 3 start/14:00 end/16:00` — Changes only the timing.
+- `editlesson 1 2 sub/Physics d/Wednesday start/10:00 end/12:00` — Changes all fields at once.
+  </box>
+
+Examples:
+* `editlesson 1 1 d/Wednesday` — Changes the day of the first lesson of the first student to Wednesday.
+* `editlesson 2 1 start/14:00 end/16:00` — Changes the timing of the first lesson of the second student to 2:00 PM - 4:00 PM.
+* `editlesson 3 2 sub/Chemistry d/Friday start/09:00 end/11:00` — Changes the subject, day, and timing of the second lesson of the third student.
+
+
+|                      Before                       |                        After                         |
+|:-------------------------------------------------:|:----------------------------------------------------:|
+| ![before editlesson](images/BeforeEditLesson.png) | ![result for editlesson](images/AfterEditLesson.png) |
+|       _Before editing lesson of Alex Yeoh_        |       _After editing lesson day for Alex Yeoh_       |
 
 
 ### Deleting a lesson from a student: `dellesson`
@@ -356,9 +351,9 @@ Deletes a specific lesson (by index) from a given student.
 Format: `dellesson STUDENT_INDEX LESSON_INDEX`
 
 **Field Requirements:**
-* `STUDENT_INDEX` and `LESSON_INDEX` must be **positive integers** not exceeding MAX-INT (2,147,483,647)
-* `STUDENT_INDEX` refers to the student's position in the displayed list
-* `LESSON_INDEX` refers to the lesson's position within that student's lesson list
+* `STUDENT_INDEX` and `LESSON_INDEX` must be **positive integers** (1, 2, 3, …) not exceeding MAX-INT (2,147,483,647).
+* `STUDENT_INDEX` refers to the student's position in the displayed list.
+* `LESSON_INDEX` refers to the lesson's position within that student's lesson list.
 
 <box type="info" seamless>
 
@@ -380,50 +375,46 @@ If an invalid index is entered:
 |                          Before                          |                            After                             |
 |:--------------------------------------------------------:|:------------------------------------------------------------:|
 | ![before 'dellesson 1 2'](images/beforeDeleteLesson.png) | ![result for 'dellesson 1 2'](images/deleteLessonResult.png) |
-|     _Student Ran Doe has 2 lessons before deletion._     |        _Student Ran Doe has 1 lesson after deletion._        |
+|     _Student Ran Doe has 2 lessons before deletion_      |        _Student Ran Doe has 1 lesson after deletion_         |
 
-### Editing a lesson : `editlesson`
+### Locating students by Name, Day, or Subject: `find`
 
-Edits an existing lesson for a specific student in EduDex.
+Finds students whose **names**, **lesson days**, or **lesson subjects** match the given keywords.
 
-Format: `editlesson STUDENT_INDEX LESSON_INDEX [sub/SUBJECT] [d/DAY] [start/START_TIME] [end/END_TIME]`
+Format:  
+`find KEYWORD [MORE_KEYWORDS]`<br>
+`find NAME`  
+`find d/DAY`  
+`find sub/SUBJECT`
 
 **Field Requirements:**
-* `STUDENT_INDEX` and `LESSON_INDEX` must be **positive integers** not exceeding MAX-INT (2,147,483,647)
-* `STUDENT_INDEX` refers to the student's position in the displayed list
-* `LESSON_INDEX` refers to the lesson's position in that student's lesson list (shown in `list` command)
-* At least one optional field must be provided 
-* Lesson field constraints are the same as in the [`addlesson`](#adding-a-lesson-addlesson) command
+* For name search: any keyword (partial matches allowed).
+* For day search: valid days of the week (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday).
+* For subject search: existing subject names in EduDex.
 
-<box type="warning" seamless>
+<box type="info" seamless>
 
-**Caution:**
-* The edited lesson time must not conflict with:
-    * Other lessons of the **same student**.
-    * Lessons of **other students** (no overlapping times on the same day).
-* If changing the subject, ensure it exists in EduDex (use `addsub` first if needed)
-* If a subject has been deleted and a lesson still uses it, you must first change the subject field to a valid subject before editing other fields (day, time)
-</box>
+**Search Behavior:**
+* All searches are **case-insensitive** (e.g., `find hans` matches `Hans`).
+* For name search: matches students with at least one keyword (OR search).
+* Order of keywords does not matter (e.g., `find Hans Bo` matches `Bo Hans`).
+* Reset to the base student list after each search by executing `list`.
+* For `find sub/SUBJECT`: lessons are automatically sorted by day and start time.
+  </box>
 
 <box type="tip" seamless>
 
-**Tip:** You can edit just one field at a time or multiple fields together.
-- `editlesson 1 1 d/Tuesday` — Changes only the day of the first lesson.
-- `editlesson 2 3 start/14:00 end/16:00` — Changes only the timing.
-- `editlesson 1 2 sub/Physics d/Wednesday start/10:00 end/12:00` — Changes all fields at once.
+**Tip:** You can search by name, day, or subject independently.  
+e.g.
+- `find alice` — finds students with names containing "alice".
+- `find alex david` — finds both `Alex Yeoh` and `David Li`.
+- `find d/Monday` — finds all students with lessons on Monday.
+- `find sub/Math` — finds all students taking Math lessons.
   </box>
 
-Examples:
-* `editlesson 1 1 d/Wednesday` — Changes the day of the first lesson of the first student to Wednesday.
-* `editlesson 2 1 start/14:00 end/16:00` — Changes the timing of the first lesson of the second student to 2:00 PM - 4:00 PM.
-* `editlesson 3 2 sub/Chemistry d/Friday start/09:00 end/11:00` — Changes the subject, day, and timing of the second lesson of the third student.
+![result for 'find Alex David'](images/findAlexDavidResult.png)
 
-
-|                      Before                       |                        After                         |
-|:-------------------------------------------------:|:----------------------------------------------------:|
-| ![before editlesson](images/BeforeEditLesson.png) | ![result for editlesson](images/AfterEditLesson.png) |
-|       _Before editing lesson of Alex Yeoh._       |      _After editing lesson day for Alex Yeoh._       |
-
+_Find result for names 'Alex' or 'David'_
 
 
 ### Clearing all students : `clear`
@@ -444,29 +435,43 @@ EduDex data are saved in the hard disk automatically after any command that chan
 
 ### Editing the JSON data file
 
-EduDex data are saved automatically as a JSON file `[JAR file location]/data/edudex.json`. Advanced users are welcome to update data directly by editing that data file.
+EduDex data are saved automatically as a JSON file `[JAR file location]/data/edudex.json`. 
 
+<box type="warning" seamless>
 
-The `edudex.json` file defines the **data model** for managing tutees in the EduDex application.
+**Caution:**
+This section is intended for **advanced users** only.
+</box>
+
+The `edudex.json` file defines the **data model** for managing students in the EduDex application.
 This is intended for power users who wish to edit `edudex.json` without using the GUI.
 
 <box type="warning" seamless>
 
 **Caution:**
-If your changes to the data file makes its format invalid, EduDex will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the EduDex to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+* If your changes to the data file make its format invalid, EduDex will discard all data and start with an empty data file at the next run.  
+* Make a backup of the file before editing it.<br>
+* Certain edits can cause the EduDex to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
 #### JSON: Top-Level Overview
 
+<box type="info" seamless>
+Any reference of "Student" and "Person" is interchangeable.
+</box>
+
 ```json
 {
-  "persons": [ ... ], // required
-  "subjects": [ ... ] // required
+  "persons": { ... }, // required
+  "subjects": { ... }, // required
 }
 ```
 
-**Student**
+#### JSON: Person
+
+Each entry in `person` defines a distinct student object.
+
+**Structure**
 ```json
 {
   "name": "Full Name", // required, 
@@ -496,7 +501,7 @@ Furthermore, certain edits can cause the EduDex to behave in unexpected ways (e.
 | `address`          | string    | Any value, must not be blank                                                              |
 | `tags`             | string[]  | Alphanumeric, optional                                                                    |
 | `lessons`          | Lesson[]  | See fields below                                                                          |
-| `lesson:name`      | string    | Alphanumeric Characters and Spaces, must not be blank                                     |
+| `lesson:subject`   | string    | Alphanumeric Characters and Spaces, must not be blank                                     |
 | `lesson:day`       | string    | Only one of the following: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday |
 | `lesson:startTime` | string    | HH:MM (24-hour format), must be a valid time before endTime                               |
 | `lesson:endTime`   | string    | HH:MM (24-hour format), must be a valid time after startTime                              |
@@ -543,6 +548,7 @@ Each entry in `subjects` defines a distinct academic subject.
 ```
 
 **Rules**
+
 - Each subject **must** have a unique `subjectName`.
 - Subject names are **case-insensitive**.
 - No duplicate entries allowed.
@@ -558,7 +564,7 @@ Each entry in `subjects` defines a distinct academic subject.
 }
 ```
 
-**JSON Example**
+#### JSON: Example
 ```json
 {
   "persons": {
@@ -595,7 +601,8 @@ Each entry in `subjects` defines a distinct academic subject.
 2. **Adding Entries**
 - To add a new student, append a new object to the `persons` array.
 - To add a new subject, append a new object to `subjects`.
-  </box>
+
+</box>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -605,7 +612,7 @@ Each entry in `subjects` defines a distinct academic subject.
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous EduDex home folder.
 
 **Q**: Why does EduDex not allow adding a student with the same name but different fields?<br>
-**A**: EduDex is a contact management app just like your phone contact aimed to improve user convenience. In practice, tutors find it difficult to quickly distinguish between two "John Doe" entries when scheduling lessons or viewing contact lists. 
+**A**: EduDex is a student management app just like your phone contacts aimed to improve user convenience. In practice, tutors find it difficult to quickly distinguish between two "John Doe" entries when scheduling lessons or viewing student lists. 
 To add students with similar names, simply append unique identifiers like "John Tan 1" and "John Tan 2", or use more descriptive labels like "John Doe Pri 3" and "John Doe Sec 1". 
 This approach ensures you can always identify the correct student at a glance.
 
@@ -639,3 +646,17 @@ This approach ensures you can always identify the correct student at a glance.
 | **Clear**          | `clear`                                                                                                                                                                  |
 | **Help**           | `help`                                                                                                                                                                   |
 | **Exit**           | `exit`                                                                                                                                                                   |
+
+--------------------------------------------------------------------------------------------------------------------
+
+### Glossary
+
+* **CLI**: Command Line Interface. A text-based interface where users interact with a program by typing commands.
+* **GUI**: Graphical User Interface. A visual-based interface where users interact with a program by interacting with windows, icons and menus.
+* **Java**: The programming language used to implement this application.
+* **JSON**: JavaScript Object Notation. A lightweight, text-based data interchange format, easily parsable by machines.
+* **JSON linter**: A tool that checks and enforces the correct syntax, structure, and style of JSON data.
+* **Parameters**: Inputs provided to a command. A command may have zero or more parameters depending on its functionality.
+* **Student**: Refers to a learner or individual being taught by the user of this application. Interchangeable with "Person".
+* **Trailing commas**: A comma placed at the end of a list of JSON entries before the closing bracket.
+* **UTF-8**: The standard for how Unicode numbers are translated into binary numbers to be stored in the computer.
