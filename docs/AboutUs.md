@@ -7,7 +7,7 @@
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
+You can reach us at the email `ryan_toh@u.nus.edu`
 
 ## Project team
 
@@ -15,11 +15,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/nghaowei.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
 [[github](https://github.com/nghaowei)]
 [[portfolio](team/nghaowei.md)]
 
 * Role: Code Quality Checker
+* Responsibilities: Ensure that code written is consistent in style and applies the correct programming paradigms.
 
 ### Bawa Amarnath Sania
 
@@ -30,7 +30,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Deliverables and deadlines, Scheduling and tracking
 * Responsibilities: Ensure project deliverables are done on time and in the right format.
-In charge of defining, assigning, and tracking project tasks
+In charge of defining, assigning, and tracking project tasks.
 
 ### Lim Tze Shaun
 
@@ -39,7 +39,7 @@ In charge of defining, assigning, and tracking project tasks
 [[github](http://github.com/Juggernaut102)] [[portfolio](team/shaun.md)]
 
 * Role: Testing
-* Responsibilities:
+* Responsibilities: Ensure that code coverage is sufficient and the appropriate tests are written.
 
 ### Bryan Leng
 
@@ -49,7 +49,7 @@ In charge of defining, assigning, and tracking project tasks
 [[portfolio](team/bryanleng.md)]
 
 * Role: Documentation + Git expert
-* Responsibilities:
+* Responsibilities: Ensure that documentation is consistent with the implementation.
 
 ### Ryan Toh
 
@@ -59,4 +59,4 @@ In charge of defining, assigning, and tracking project tasks
 [[portfolio](team/ryan-toh.md)]
 
 * Role: Team Lead
-* Responsibilities: UI
+* Responsibilities: Ensure that the User Interface is easy and intuitive to use.
